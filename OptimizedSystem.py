@@ -11,6 +11,10 @@ class SistemaDeColasOptimizado:
     La tasa de llegada total, es la tasa de llegada por servidor multiplicada por el número de servidores,
     con esto, se obtiene la tasa de llegada total al sistema, lo cuál sería la tasa de llegada promedio (λ).
     (No es lo mismo la tasa de llegada por servidor a la tasa de llegada promedio)
+    
+    En este caso se tiene un sistema con 10 servidores, cada uno con una tasa de llegada de 250 
+    clientes por segundo. Por lo tanto, la tasa de llegada total al sistema es de 2500 clientes por segundo 
+    (λ = 2500). Esta tasa de llegada, es la vuelve al sistema inestable y por lo tanto, se necesita optimizar.
 
     """
     def __init__(self, numero_de_servidores, tasa_de_llegada_por_servidor, tasa_de_servicio):
@@ -53,6 +57,12 @@ if __name__ == "__main__":
     resultado_aumento_tasa_servicio = pd.DataFrame()
     resultado_aumento_servidores_tasa_servicio = pd.DataFrame()
     
+    """
+    
+    Aumento de la tasa de servicio, desde 250 hasta 350 con incrementos de 10.
+    
+    """
+    
     for tasa_servicio in range(250, 351, 10):  
         sistema_tasa_servicio.tasa_de_servicio = tasa_servicio
         p0, estado = sistema_tasa_servicio.calcular_p0()
@@ -73,6 +83,11 @@ if __name__ == "__main__":
         })
         resultado_aumento_tasa_servicio = pd.concat([resultado_aumento_tasa_servicio, nuevo_registro], ignore_index=True)
         
+        """
+        
+        Aumento de la tasa de servicio y el número de servidores, desde 10 hasta 20 con incrementos de 1.
+        
+        """
         
     for num_servidores in range(10, 21):
         sistema_servidores.actualizar_parametros(numero_de_servidores=num_servidores)

@@ -35,6 +35,25 @@ if __name__ == "__main__":
     sistema = SistemaDeColas(numero_de_servidores=10, tasa_de_llegada_por_servidor=200, tasa_de_servicio=250)
     resultados = pd.DataFrame(columns=["Tasa de Llegada", "P0", "Tiempo de Espera (W)", "Probabilidad de Espera (P_w)", "Estado del Sistema", "Rho"])    
     
+    """
+    Por definición ρ es la tasa de uso de cada servidor (porcentaje del tiempo que cada servidor es ocupado).
+    
+    Aumento de la tasa de llegada por servidor, desde 150 hasta 250 con incrementos de 10, lo que 
+    implica un aumento de la tasa de llegada total del sistema (λ) de 1500 a 2500.
+    
+    Variamos la tasa de llegada del servidor, para analizar cuál es su comportamiento en el sistema.
+    Principalmente para dictaminar en qué punto el sistema es inestable. Posteriormente, usamos la
+    llegada total del sistema (λ) dentro de la cuál el sistema es inestable, para optimizar el sistema.
+    
+    El sistema es inestable cuando el valor de ρ es mayor o igual a 1. Lo que implica que el sistema
+    no es capaz de procesar las solicitudes entrantes, y por lo tanto, se acumulan en la cola.
+    
+    ρ es igual a λ / (μ * c), donde λ es la tasa de llegada total, μ es la tasa de servicio 
+    k es el número de servidores. Por lo cuál ρ es directamente proporcional a la tasa de llegada total.
+    Eso quiere decir que a medida que aumenta la tasa de llegada total, ρ crece y el sistema se vuelve inestable.
+    
+    """
+    
     for tasa in range(150, 251, 10):
         sistema.tasa_de_llegada_por_servidor = tasa
         sistema.tasa_de_llegada_total = tasa * sistema.numero_de_servidores

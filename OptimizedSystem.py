@@ -2,6 +2,17 @@ import math
 import pandas as pd
 
 class SistemaDeColasOptimizado:
+    
+    """
+    
+    tasa promedio de llegada (λ): “se define como la cantidad de clientes que llegan en un 
+    tiempo al sistema.”
+    
+    La tasa de llegada total, es la tasa de llegada por servidor multiplicada por el número de servidores,
+    con esto, se obtiene la tasa de llegada total al sistema, lo cuál sería la tasa de llegada promedio (λ).
+    (No es lo mismo la tasa de llegada por servidor a la tasa de llegada promedio)
+
+    """
     def __init__(self, numero_de_servidores, tasa_de_llegada_por_servidor, tasa_de_servicio):
         self.numero_de_servidores = numero_de_servidores
         self.tasa_de_llegada_por_servidor = tasa_de_llegada_por_servidor

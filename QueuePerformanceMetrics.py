@@ -66,7 +66,7 @@ if __name__ == "__main__":
             w = pw = rho = None
         
         nuevo_registro = pd.DataFrame({
-            "Tasa de Llegada": [tasa],
+            "Tasa de Llegada": [sistema.tasa_de_llegada_total],
             "P0": [p0],
             "Tiempo de Espera (W)": [w],
             "Probabilidad de Espera (P_w)": [pw],
